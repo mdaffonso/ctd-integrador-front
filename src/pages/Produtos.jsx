@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import Produto from "../components/Produto";
 import api from "../services/api";
+import styles from './Produtos.module.scss'
 
 export default function Produtos(){
 
