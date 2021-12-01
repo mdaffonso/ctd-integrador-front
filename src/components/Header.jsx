@@ -5,10 +5,10 @@ export default function Header(){
         <header>
             <nav>
                 <img src="" alt="logo" />
-                <Link to="">Início</Link>
-                <Link to="">Produtos</Link>
-                <Link to="">Carrinho</Link>
-                <Link to="">Sobre</Link>
+                <Link to="/">Início</Link>
+                <Link to="/produtos">Produtos</Link>
+                <Link to="/carrinho">Carrinho</Link>
+                <Link to="/sobre">Sobre</Link>
             </nav>
         </header>
     )
