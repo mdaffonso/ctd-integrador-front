@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Produtos from './pages/Produtos'
 import Sobre from './pages/Sobre';
 import Header from './components/Header'
+import ProdutoDetalhes from './pages/ProdutoDetalhes';
+import NotFound from './pages/NotFound';
 
 export default function RouteList(){
     return(
@@ -14,7 +16,8 @@ export default function RouteList(){
                 <Route path="produtos" element={ <Produtos />} />
                 <Route path="carrinho" element={ <Carrinho />} />
                 <Route path="sobre" element={ <Sobre />} />
-
+                <Route path="/produtos/:produtoId" element={<ProdutoDetalhes />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     )
