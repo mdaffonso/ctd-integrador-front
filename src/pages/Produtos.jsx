@@ -6,32 +6,39 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from './Produtos.module.scss'
 import SmallSpinner from "../components/SmallSpinner";
 import Wrapper from "../components/Wrapper";
+import { Link, useParams } from "react-router-dom";
  
 export default function Produtos(){
 
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const categorias = ['Cama', 'Mesa', 'Banho', 'Gamer', 'Roupa', 'Acessórios', 'Ventiladores', 'Monitores', 'Celulares', "Caixas d'água"]
 
+    const { categoria } = useParams();
+    
     useEffect(() => {
         const load = async () => {
             try{
-                const response = await api.get("products")
-                setProducts(response.data)
+                if(!categoria){
+                    const response = await api.get("products")
+                    setProducts(response.data)
+                }else{
+                    const response = await api.get(`products/category/${categoria}`)
+                    setProducts(response.data)
+                }
             } catch(e) {
                 setError("Não foi possível carregar os produtos")
             }
+            
         }
         load()
-    }, [])
+    }, [categoria])
 
     useEffect(() => {
         if (products) {
             setLoading(false)
         }
     }, [products])
-
 
     return(
         <>
@@ -49,7 +56,11 @@ export default function Produtos(){
                         <Wrapper>
                             <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
                                 <h2 className={styles.title}>Categorias</h2>
-                                { categorias.map((categoria) => <p className={styles.categoria}>{categoria}</p> )}
+                                <Link className={styles.categoria} to="/produtos">Todas</Link>
+                                <Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
+                                <Link className={styles.categoria} to="/produtos/categoria/jewelery">Jóias</Link>
+                                <Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
+                                <Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
                             </Col>
                             <Row className={styles.linha}>
                                 {

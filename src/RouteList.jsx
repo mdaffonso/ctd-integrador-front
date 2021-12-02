@@ -14,9 +14,13 @@ export default function RouteList(){
             <Routes>
                 <Route path="/" element={ <Home />} />
                 <Route path="produtos" element={ <Produtos />} />
-                <Route path="carrinho" element={ <Carrinho />} />
-                <Route path="sobre" element={ <Sobre />} />
+                <Route path="/produtos/categoria/:categoria" element={<Produtos />} />
                 <Route path="/produtos/:produtoId" element={<ProdutoDetalhes />} />
+
+                <Route path="carrinho" element={ <Carrinho />} />
+
+                <Route path="sobre" element={ <Sobre />} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

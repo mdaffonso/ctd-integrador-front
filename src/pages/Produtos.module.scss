@@ -45,6 +45,12 @@
         padding: 0.25rem 1rem;
         border-radius: 100rem;
         background: #f3f3f3;
+        text-decoration: none;
+        color: black;
+        
+        &:hover{
+            color: rgb(124, 124, 124);
+        }
 
         @media (min-width: 768px) {
             background: none;
