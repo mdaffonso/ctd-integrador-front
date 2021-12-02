@@ -1,11 +1,12 @@
 import styles from './Produto.module.scss'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export default function Produto(props){
 
     return(
         <>
-        <a className={styles.link} href={`${window.location}/${props.identidade}`} >
+        <Link className={styles.link} to={`/produtos/${props.identidade}`}>
             <Card className={styles.cartao}>
                 <Card.Img className={styles.img} variant="top" src={props.image} alt="product" />
                 <Card.Body className={styles.corpo}>
@@ -16,7 +17,7 @@ export default function Produto(props){
 
                 </Card.Body>
             </Card>
-        </a>
+        </Link>
         </>
     )
 }
