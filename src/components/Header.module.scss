@@ -1,0 +1,26 @@
+.image{
+    width: 5rem;
+    height: auto;
+}
+.navbar{
+    padding: 1rem 0;
+}
+.logo{
+    margin: .5rem 2rem .5rem 0;
+}
+.header{
+    margin: 0 0 2rem 0;
+}
+.links{
+    display: flex;
+    gap: 1rem;
+}
+.link{
+
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    &:hover{
+        color: rgb(231, 230, 230);
+    }
+}
