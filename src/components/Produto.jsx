@@ -14,7 +14,6 @@ export default function Produto(props){
                         <Card.Text className={styles.desc}>
                             {props.title}
                         </Card.Text>
-
                     </Card.Body>
                 </Card>
             </Link>

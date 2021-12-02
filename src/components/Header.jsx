@@ -7,9 +7,9 @@ export default function Header(){
         <header className={styles.header}>
             <Navbar className={styles.navbar} collapseOnSelect expand="md" bg="dark" variant="dark">
                 <Container>
-                <Navbar.Brand className={styles.logo} href="/">
-                    <img src="./images/twitter.png" className={styles.image} alt="logo" />
-                </Navbar.Brand>
+                <Link className={styles.logo} to="/">
+                    <img src="/images/rettiwt.png" className={styles.image} alt="logo" />
+                </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className={`me-auto ${styles.links}`}>

@@ -5,6 +5,7 @@ import api from "../services/api";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from './Produtos.module.scss'
 import SmallSpinner from "../components/SmallSpinner";
+import Wrapper from "../components/Wrapper";
  
 export default function Produtos(){
 
@@ -42,12 +43,10 @@ export default function Produtos(){
                 error ? (
                     <p>{error}</p>
                 ) : loading ? (
-                    <div className={styles.spinner}>
-                        <SmallSpinner />
-                    </div>
+                    <SmallSpinner />
                 ) : (
                     <Container>
-                        <div className={styles.productsWrapper}>
+                        <Wrapper>
                             <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
                                 <h2 className={styles.title}>Categorias</h2>
                                 { categorias.map((categoria) => <p className={styles.categoria}>{categoria}</p> )}
@@ -61,7 +60,7 @@ export default function Produtos(){
                                     ))
                                 }
                             </Row>
-                        </div>
+                        </Wrapper>
                     </Container>
                 )
             }

@@ -1,0 +1,9 @@
+.productsWrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+
+    @media (min-width: 768px) {
+        flex-flow: row;
+    }
+}
