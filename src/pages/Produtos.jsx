@@ -18,6 +18,8 @@ export default function Produtos(){
     
     useEffect(() => {
         const load = async () => {
+            setProducts(null)
+            setLoading(true)
             try{
                 if(!categoria){
                     const response = await api.get("products")
@@ -46,12 +48,6 @@ export default function Produtos(){
                 <title>CTD Commerce | Produtos</title>
             </Helmet>
 
-            {
-                error ? (
-                    <p>{error}</p>
-                ) : loading ? (
-                    <SmallSpinner />
-                ) : (
                     <Container>
                         <Wrapper>
                             <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
@@ -62,19 +58,22 @@ export default function Produtos(){
                                 <Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
                                 <Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
                             </Col>
-                            <Row className={styles.linha}>
+                            {
+                                error ? (<p>{error}</p>) : loading ? (<SmallSpinner />) :(
+                                <Row className={styles.linha}>
                                 {
-                                    products.length > 0 && products.map(({id, title, price, image}) => (
+                                    products && products.map(({id, title, price, image}) => (
                                         <Col sm={12} md={6} l={4} xl={3}>
                                             <Produto key={id} identidade={id} title={title} price={price} image={image} />
                                         </Col>
                                     ))
                                 }
-                            </Row>
+                                </Row>)
+                            }
                         </Wrapper>
                     </Container>
-                )
-            }
+    
+
         </>
     )
 }
