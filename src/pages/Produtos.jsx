@@ -42,7 +42,9 @@ export default function Produtos(){
                 error ? (
                     <p>{error}</p>
                 ) : loading ? (
-                    <SmallSpinner />
+                    <div className={styles.spinner}>
+                        <SmallSpinner />
+                    </div>
                 ) : (
                     <Container>
                         <div className={styles.productsWrapper}>

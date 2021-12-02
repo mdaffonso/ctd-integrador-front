@@ -17,7 +17,6 @@ export default function Header(){
                         <Link className={styles.link} to="/produtos">Produtos</Link>
                         <Link className={styles.link} to="/carrinho">Carrinho</Link>
                         <Link className={styles.link} to="/sobre">Sobre</Link>
-                        <Link className={styles.link} to="/carrinho">Carrinho</Link>
                     </Nav>
                 </Navbar.Collapse>
                 </Container>
