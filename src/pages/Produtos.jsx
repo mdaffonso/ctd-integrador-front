@@ -4,86 +4,92 @@ import Produto from "../components/Produto";
 import api from "../services/api";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from './Produtos.module.scss'
+import SmallSpinner from "../components/SmallSpinner";
  
 export default function Produtos(){
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
     const categorias = ['Cama', 'Mesa', 'Banho', 'Gamer', 'Roupa', 'Acessórios', 'Ventiladores', 'Monitores', 'Celulares', "Caixas d'água"]
 
-    useEffect(()=>{
-        async function loadProducts(){
+    useEffect(() => {
+        const load = async () => {
             try{
                 const response = await api.get("products")
                 setProducts(response.data)
-            }catch(e){
-                console.log(e);
+            } catch(e) {
+                setError("Não foi possível carregar os produtos")
             }
-            
         }
-        loadProducts()
-    })
+        load()
+    }, [])
+
+    useEffect(() => {
+        if (products) {
+            setLoading(false)
+        }
+    }, [products])
 
 
     return(
-            <>
+        <>
             <Helmet>
                 <title>CTD Commerce | Produtos</title>
             </Helmet>
-            <div>
-                <Container>
-                    <Row className={`d-block d-lg-none ${styles.catIcon}`}>
-                        <h2>Categorias</h2>
-                        <p>PEDIR AJUDA PRO AFFONSO</p>
-                    </Row>
-                    <Row className={styles.linha}>
-                    <Col md={3} className={`d-none d-lg-block ${styles.categorias}`}>
-                        <p className={styles.title}>Categorias</p>
-                        {categorias.map((c)=>{
-                            return (
-                                <p>- {c}</p>
-                            )
-                        })}
-                    </Col>
-                    <Col md={3}>
-                            <ul>
-                                {products.length > 0 && products.map(({id, title, price, image})=>{
-                                        return(
-                                            <>
-                                                <Produto key={id} identidade={id} title={title} price={price} image={image} />
-                                            </>
-                                        )
-                                    }
-                                )}
-                            </ul>
+
+            {
+                error ? (
+                    <p>{error}</p>
+                ) : loading ? (
+                    <SmallSpinner />
+                ) : (
+                    <Container>
+                        <Row className={styles.linha}>
+                        <Col sm={12} md={3} xl={2} className={`d-lg-block ${styles.categorias}`}>
+                            <h2 className={styles.title}>Categorias</h2>
+                            { categorias.map((categoria) => <p className={styles.categoria}>{categoria}</p> )}
                         </Col>
                         <Col md={3}>
-                            <ul>
-                                {products.length > 0 && products.map(({id, title, price, image})=>{
-                                        return(
-                                            <>
-                                                <Produto key={id} identidade={id} title={title} price={price} image={image} />
-                                            </>
-                                        )
-                                    }
-                                )}
-                            </ul>
-                        </Col>
-                        <Col md={3}>
-                            <ul>
-                                {products.length > 0 && products.map(({id, title, price, image})=>{
-                                        return(
-                                            <>
-                                                <Produto key={id} identidade={id} title={title} price={price} image={image} />
-                                            </>
-                                        )
-                                    }
-                                )}
-                            </ul>
-                        </Col>
-                    </Row>
-                </Container>
-                
-            </div>
+                                <ul>
+                                    {products.length > 0 && products.map(({id, title, price, image})=>{
+                                            return(
+                                                <>
+                                                    <Produto key={id} identidade={id} title={title} price={price} image={image} />
+                                                </>
+                                            )
+                                        }
+                                    )}
+                                </ul>
+                            </Col>
+                            <Col md={3}>
+                                <ul>
+                                    {products.length > 0 && products.map(({id, title, price, image})=>{
+                                            return(
+                                                <>
+                                                    <Produto key={id} identidade={id} title={title} price={price} image={image} />
+                                                </>
+                                            )
+                                        }
+                                    )}
+                                </ul>
+                            </Col>
+                            <Col md={3}>
+                                <ul>
+                                    {products.length > 0 && products.map(({id, title, price, image})=>{
+                                            return(
+                                                <>
+                                                    <Produto key={id} identidade={id} title={title} price={price} image={image} />
+                                                </>
+                                            )
+                                        }
+                                    )}
+                                </ul>
+                            </Col>
+                        </Row>
+                    </Container>
+                )
+            }
         </>
     )
 }
