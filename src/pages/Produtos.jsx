@@ -45,48 +45,21 @@ export default function Produtos(){
                     <SmallSpinner />
                 ) : (
                     <Container>
-                        <Row className={styles.linha}>
-                        <Col sm={12} md={3} xl={2} className={`d-lg-block ${styles.categorias}`}>
-                            <h2 className={styles.title}>Categorias</h2>
-                            { categorias.map((categoria) => <p className={styles.categoria}>{categoria}</p> )}
-                        </Col>
-                        <Col md={3}>
-                                <ul>
-                                    {products.length > 0 && products.map(({id, title, price, image})=>{
-                                            return(
-                                                <>
-                                                    <Produto key={id} identidade={id} title={title} price={price} image={image} />
-                                                </>
-                                            )
-                                        }
-                                    )}
-                                </ul>
+                        <div className={styles.productsWrapper}>
+                            <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
+                                <h2 className={styles.title}>Categorias</h2>
+                                { categorias.map((categoria) => <p className={styles.categoria}>{categoria}</p> )}
                             </Col>
-                            <Col md={3}>
-                                <ul>
-                                    {products.length > 0 && products.map(({id, title, price, image})=>{
-                                            return(
-                                                <>
-                                                    <Produto key={id} identidade={id} title={title} price={price} image={image} />
-                                                </>
-                                            )
-                                        }
-                                    )}
-                                </ul>
-                            </Col>
-                            <Col md={3}>
-                                <ul>
-                                    {products.length > 0 && products.map(({id, title, price, image})=>{
-                                            return(
-                                                <>
-                                                    <Produto key={id} identidade={id} title={title} price={price} image={image} />
-                                                </>
-                                            )
-                                        }
-                                    )}
-                                </ul>
-                            </Col>
-                        </Row>
+                            <Row className={styles.linha}>
+                                {
+                                    products.length > 0 && products.map(({id, title, price, image}) => (
+                                        <Col sm={12} md={6} l={4} xl={3}>
+                                            <Produto key={id} identidade={id} title={title} price={price} image={image} />
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                        </div>
                     </Container>
                 )
             }
