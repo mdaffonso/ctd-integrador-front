@@ -88,13 +88,13 @@ export default function Home(){
                                     products && (
                                         <>
                                         <Col md={3} sm={6} className={styles.produto}>
-                                            <Produto identidade={products[6].id} title={products[6].title} price={products[6].price} image={products[3].image} />
+                                            <Produto identidade={products[6].id} title={products[6].title} price={products[6].price} image={products[6].image} />
                                         </Col>
                                         <Col md={3} sm={6} className={`d-none d-sm-block ${styles.produto}`}>
-                                            <Produto identidade={products[7].id} title={products[7].title} price={products[7].price} image={products[4].image} />
+                                            <Produto identidade={products[7].id} title={products[7].title} price={products[7].price} image={products[7].image} />
                                         </Col> 
                                         <Col md={3} sm={6} className={`d-none d-lg-block ${styles.produto}`}>
-                                            <Produto identidade={products[8].id} title={products[8].title} price={products[8].price} image={products[5].image} />
+                                            <Produto identidade={products[8].id} title={products[8].title} price={products[8].price} image={products[8].image} />
                                         </Col> 
                                         </>
                                     )
@@ -131,7 +131,7 @@ export default function Home(){
                             </Link>
                             <Link className={styles.categoria} to="/produtos/categoria/electronics">
                                 <img src="/images/eletronicos.png" alt="" />
-                                <p>Eltrônicos</p>
+                                <p>Eletrônicos</p>
                             </Link>
                             <Link className={styles.categoria} to="/produtos/categoria/men's clothing">
                                 <img src="/images/camisa.png" alt="" />
