@@ -54,7 +54,7 @@ export default function Produtos(){
                                 <h2 className={styles.title}>Categorias</h2>
                                 <Link className={styles.categoria} to="/produtos">Todas</Link>
                                 <Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
-                                <Link className={styles.categoria} to="/produtos/categoria/jewelery">Jóias</Link>
+                                <Link className={styles.categoria} to="/produtos/categoria/jewelery">Joias</Link>
                                 <Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
                                 <Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
                             </Col>
