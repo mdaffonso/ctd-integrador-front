@@ -49,13 +49,13 @@ export default function Home(){
                                 {
                                     products && (
                                         <>
-                                        <Col md={3} sm={6}>
+                                        <Col md={3} sm={6} className={styles.produto}>
                                             <Produto identidade={products[0].id} title={products[0].title} price={products[0].price} image={products[0].image} />
                                         </Col>
-                                        <Col md={3} sm={6} className="d-none d-sm-block">
+                                        <Col md={3} sm={6} className={`d-none d-sm-block ${styles.produto}`}>
                                             <Produto identidade={products[1].id} title={products[1].title} price={products[1].price} image={products[1].image} />
                                         </Col> 
-                                        <Col md={3} sm={6} className="d-none d-md-block">
+                                        <Col md={3} sm={6} className={`d-none d-lg-block ${styles.produto}`}>
                                             <Produto identidade={products[2].id} title={products[2].title} price={products[2].price} image={products[2].image} />
                                         </Col> 
                                         </>
@@ -68,13 +68,13 @@ export default function Home(){
                                 {
                                     products && (
                                         <>
-                                        <Col md={3} sm={6}>
+                                        <Col md={3} sm={6} className={styles.produto}>
                                             <Produto identidade={products[3].id} title={products[3].title} price={products[3].price} image={products[3].image} />
                                         </Col>
-                                        <Col md={3} sm={6} className="d-none d-sm-block">
+                                        <Col md={3} sm={6} className={`d-none d-sm-block ${styles.produto}`}>
                                             <Produto identidade={products[4].id} title={products[4].title} price={products[4].price} image={products[4].image} />
                                         </Col> 
-                                        <Col md={3} sm={6} className="d-none d-md-block">
+                                        <Col md={3} sm={6} className={`d-none d-lg-block ${styles.produto}`}>
                                             <Produto identidade={products[5].id} title={products[5].title} price={products[5].price} image={products[5].image} />
                                         </Col> 
                                         </>
@@ -87,14 +87,14 @@ export default function Home(){
                                 {
                                     products && (
                                         <>
-                                        <Col md={3} sm={6}>
-                                            <Produto identidade={products[6].id} title={products[6].title} price={products[6].price} image={products[6].image} />
+                                        <Col md={3} sm={6} className={styles.produto}>
+                                            <Produto identidade={products[6].id} title={products[6].title} price={products[6].price} image={products[3].image} />
                                         </Col>
-                                        <Col md={3} sm={6} className="d-none d-sm-block">
-                                            <Produto identidade={products[7].id} title={products[7].title} price={products[7].price} image={products[7].image} />
+                                        <Col md={3} sm={6} className={`d-none d-sm-block ${styles.produto}`}>
+                                            <Produto identidade={products[7].id} title={products[7].title} price={products[7].price} image={products[4].image} />
                                         </Col> 
-                                        <Col md={3} sm={6} className="d-none d-md-block">
-                                            <Produto identidade={products[8].id} title={products[8].title} price={products[8].price} image={products[8].image} />
+                                        <Col md={3} sm={6} className={`d-none d-lg-block ${styles.produto}`}>
+                                            <Produto identidade={products[8].id} title={products[8].title} price={products[8].price} image={products[5].image} />
                                         </Col> 
                                         </>
                                     )
@@ -102,6 +102,7 @@ export default function Home(){
                             </Row>
                         </Carousel.Item>
                     </Carousel>
+
                     <div className={styles.ofertas}>
                         <div className={styles.title}>
                             <h2>Ofertas do dia </h2>
