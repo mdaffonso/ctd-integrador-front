@@ -52,11 +52,11 @@ export default function Produtos(){
                         <Wrapper>
                             <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
                                 <h2 className={styles.title}>Categorias</h2>
-                                <Link className={styles.categoria} to="/produtos">Todas</Link>
-                                <Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
-                                <Link className={styles.categoria} to="/produtos/categoria/jewelery">Joias</Link>
-                                <Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
-                                <Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
+                                    <Link className={styles.categoria} to="/produtos">Todas</Link>
+                                    <Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
+                                    <Link className={styles.categoria} to="/produtos/categoria/jewelery">Joias</Link>
+                                    <Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
+                                    <Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
                             </Col>
                             {
                                 error ? (<p>{error}</p>) : loading ? (<SmallSpinner />) :(
