@@ -16,16 +16,14 @@ export default function Produtos(){
 
     const { categoria } = useParams();
 
-    const categoriaTraduzida = (cat) =>{
-        if(cat === 'electronics'){
-            return "Eletrônicos"
-        }else if(cat === 'jewelery'){
-            return "Joias"
-        }else if(cat === "men's clothing"){
-            return "Vestuário Masculino"
-        }else if(cat === "women's clothing"){
-            return "Vestuário Feminino"
-        }
+    const traduzir = cat => {
+        const catMatrix = [
+          {  condition: "electronics", result: "Eletrônicos"  },
+          {  condition: "jewelery", result: "Joias"  },
+          {  condition: "men's clothing", result: "Vestuário Masculino"  },
+          {  condition: "women's clothing", result: "Vestuário Feminino"  }
+        ]
+        return catMatrix.find(c => c.condition === cat).result
     }
 
     useEffect(() => {
@@ -61,7 +59,7 @@ export default function Produtos(){
             </Helmet>
 
                     <Container>
-                        <h1 className={styles.h1}>Produtos {categoria ? <>- {categoriaTraduzida(categoria)}</> : ''}</h1>
+                        <h1 className={styles.h1}>Produtos {categoria ? <>- {traduzir(categoria)}</> : ''}</h1>
                         <Wrapper>
                             <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
                                 <h2 className={styles.title}>Categorias</h2>
