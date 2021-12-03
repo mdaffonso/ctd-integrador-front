@@ -1,12 +1,17 @@
 .image{
     width: 5rem;
     height: auto;
+    transition: transform 1500ms cubic-bezier(.69,-0.35,.34,1.4), filter 300ms 500ms ease-in-out;
 }
 .navbar{
     padding: 1rem 0;
 }
 .logo{
     margin: .5rem 2rem .5rem 0;
+}
+.secret {
+    transform: rotate(1260deg);
+    filter: hue-rotate(190deg);
 }
 .header{
     margin: 0 0 2rem 0;

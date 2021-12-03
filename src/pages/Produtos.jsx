@@ -63,8 +63,8 @@ export default function Produtos(){
                                 <Row className={styles.linha}>
                                 {
                                     products && products.map(({id, title, price, image}) => (
-                                        <Col sm={12} md={6} l={4} xl={3}>
-                                            <Produto key={id} identidade={id} title={title} price={price} image={image} />
+                                        <Col sm={12} md={6} l={4} xl={3} key={id}>
+                                            <Produto identidade={id} title={title} price={price} image={image} />
                                         </Col>
                                     ))
                                 }
