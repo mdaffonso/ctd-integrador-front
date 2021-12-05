@@ -34,12 +34,14 @@ export default function Produto(props){
                         <Card.Text className={styles.desc}>
                             {props.descricao}
                         </Card.Text>
-                        <Card.Text className={styles.desc}>
+                        <Card.Text as="div" className={styles.descSobre}>
+                            <img src="/images/linkedin.png" alt="github logo" />
                             <a className={styles.link} href={props.linkedin} rel="noreferrer" target="_blank">
                                 Linkedin
                             </a>
                         </Card.Text>
-                        <Card.Text className={styles.desc}>
+                        <Card.Text className={styles.descSobre}>
+                            <img src="/images/github.png" alt="github logo" />
                             <a className={styles.link} href={props.github} rel="noreferrer" target="_blank">
                                 Github
                             </a>
