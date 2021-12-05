@@ -1,0 +1,31 @@
+.footerWrapper {
+  margin-top: auto;
+}
+
+.top {
+  text-transform: uppercase;
+  padding: 1rem;
+  background: #f25c1d;
+  border: none;
+  color: white;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.footer {
+  background: #212529;
+  color: white;
+  padding: 2rem 0;
+}
+
+.icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.icon {
+  max-width: 2rem;
+  height: auto;
+}

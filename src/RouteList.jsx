@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Produtos from './pages/Produtos'
 import Sobre from './pages/Sobre';
 import Header from './components/Header'
+import Footer from "./components/Footer"
 import ProdutoDetalhes from './pages/ProdutoDetalhes';
 import NotFound from './pages/NotFound';
 
@@ -23,6 +24,7 @@ export default function RouteList(){
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     )
 }

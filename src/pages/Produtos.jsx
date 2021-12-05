@@ -1,5 +1,5 @@
+import Meta from "../components/Meta"
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import Produto from "../components/Produto";
 import api from "../services/api";
 import { Container, Row, Col } from "react-bootstrap";
@@ -53,38 +53,34 @@ export default function Produtos(){
     }, [products])
 
     return(
-        <>
-            <Helmet>
-                <title>CTD Commerce | Produtos</title>
-            </Helmet>
-
-                    <Container>
-                        <h1 className={styles.h1}>Produtos {categoria ? <>- {traduzir(categoria)}</> : ''}</h1>
-                        <Wrapper>
-                            <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
-                                <h2>Categorias</h2>
-                                    <Link className={styles.categoria} to="/produtos">Todas</Link>
-                                    <Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
-                                    <Link className={styles.categoria} to="/produtos/categoria/jewelery">Joias</Link>
-                                    <Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
-                                    <Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
-                            </Col>
-                            {
-                                error ? (<p>{error}</p>) : loading ? (<SmallSpinner />) :(
-                                <Row className={styles.linha}>
-                                {
-                                    products && products.map(({id, title, price, image}) => (
-                                        <Col sm={12} md={6} l={4} xl={3} key={id}>
-                                            <Produto identidade={id} title={title} price={price} image={image} />
-                                        </Col>
-                                    ))
-                                }
-                                </Row>)
-                            }
-                        </Wrapper>
-                    </Container>
-    
-
-        </>
+			<>
+				<Meta title="Produtos" />
+				<Container>
+					<h1 className={styles.h1}>Produtos {categoria ? <>- {traduzir(categoria)}</> : ''}</h1>
+					<Wrapper>
+						<Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
+							<h2>Categorias</h2>
+							<Link className={styles.categoria} to="/produtos">Todas</Link>
+							<Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
+							<Link className={styles.categoria} to="/produtos/categoria/jewelery">Joias</Link>
+							<Link className={styles.categoria} to="/produtos/categoria/men's clothing">Vestuário Masculino</Link>
+							<Link className={styles.categoria} to="/produtos/categoria/women's clothing">Vestuário Feminino</Link>
+						</Col>
+						{
+								error ? (<p>{error}</p>) : loading ? (<SmallSpinner />) :(
+								<Row className={styles.linha}>
+								{
+										products && products.map(({id, title, price, image}) => (
+												<Col sm={12} md={6} l={4} xl={3} key={id}>
+														<Produto identidade={id} title={title} price={price} image={image} />
+												</Col>
+										))
+								}
+								</Row>
+							)
+						}
+					</Wrapper>
+				</Container>
+			</>
     )
 }
