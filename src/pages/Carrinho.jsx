@@ -3,9 +3,19 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Container, ListGroup, Image, Row, Col, Button } from 'react-bootstrap'
 import { CartContext } from "../contexts/CartContext"
+import SW from "sweetalert2"
 
 export default function Carrinho () {
-	const { items, addToCart, removeFromCart } = useContext(CartContext)
+	const { items, addToCart, removeFromCart, clearCart } = useContext(CartContext)
+
+	const confirmPurchase = () => {
+		SW.fire(
+			"Compra concluída com sucesso!",
+			"Agradecemos a preferência.",
+			"success"
+		)
+		clearCart()
+	}
 
 	return (
 		<>
@@ -31,7 +41,7 @@ export default function Carrinho () {
 																	</Col>
 
 																	<Col md={2} className="d-flex align-items-center">
-																			R$ {item.price.toFixed(2)}
+																			R$ {item.price.toFixed(2).replace(".", ",")}
 																	</Col>
 
 																	<Col md={2} className="d-flex justify-content-between align-items-center">
@@ -51,10 +61,10 @@ export default function Carrinho () {
 									<ListGroup.Item>
 											<h2>Subtotal:</h2>
 											<h3>{items.reduce((acc, item) => acc + item.quantity, 0)} {items.reduce((acc, curr) => acc + curr.quantity, 0) === 1 ? "item" : "itens"}</h3>
-											<h3 className="mt-3">R$ {items.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}</h3>
+											<h3 className="mt-3">R$ {items.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2).replace(".", ",")}</h3>
 									</ListGroup.Item>
 									<ListGroup.Item>
-											<Button type="button" className="btn-block" disabled={items.length === 0}>Confirmar a Compra</Button>
+											<Button type="button" className="btn-block" disabled={items.length === 0} onClick={confirmPurchase}>Confirmar a Compra</Button>
 									</ListGroup.Item>
 							</ListGroup>
 						</Col>

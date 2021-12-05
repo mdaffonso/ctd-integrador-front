@@ -52,13 +52,14 @@ export default function ProdutoDetalhes(){
                 <Meta title={product.title} />
                 <Container className={styles.container}>
                     <Wrapper>
-                        <Col className={styles.colImage} >
+                        <Col className={`d-flex flex-column align-items-start gap-4 ${styles.colImage}`}>
+                            <Button variant="outline-secondary" onClick={() => navigate(-1)}>Voltar</Button>
                             <img className={styles.imagem} src={product.image} alt="produto" />
                         </Col>
                         <Row className={styles.linha}>
                             <Col className={styles.colDesc} md={7}>
                                 <h2 className={styles.nome}>{product.title}</h2>
-                                <p className={styles.preco}>R$ {product.price}</p>
+                                <p className={styles.preco}>R$ {product.price.toFixed(2).replace(".", ",")}</p>
                                 <p>{product.description}</p>
                             </Col>
                             <Col className={styles.colButton} md={5}>

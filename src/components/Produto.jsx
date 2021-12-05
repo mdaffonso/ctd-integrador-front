@@ -12,7 +12,7 @@ export default function Produto(props){
                         <Card.Img className={styles.img} variant="top" src={props.image} alt="product" />
                     </Card.Body>
                     <Card.Body className={styles.corpo}>
-                        <Card.Title className={styles.preco}>$ {props.price.toFixed(2)}</Card.Title>
+                        <Card.Title className={styles.preco}>R$ {props.price.toFixed(2).replace(".", ",")}</Card.Title>
                         <Card.Text className={styles.desc}>
                             {props.title}
                         </Card.Text>

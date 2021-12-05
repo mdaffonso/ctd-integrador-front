@@ -7,6 +7,11 @@ export const CartProvider = ({children}) => {
 
   const [ items, setItems ] = useState(getItemsFromLocalStorage)
 
+  const clearCart = () => {
+    setItems([])
+    localStorage.setItem("ctdCommerceCart", JSON.stringify([]))
+  }
+
   const addToCart = (item) => {
     const itemInCart = items.find(i => i.id === item.id) || item
     const quantity = itemInCart?.quantity || 0
@@ -47,7 +52,8 @@ export const CartProvider = ({children}) => {
   const value = {
     items,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    clearCart
   }
 
   return (
