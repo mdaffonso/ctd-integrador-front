@@ -3,14 +3,22 @@ import {createContext, useState} from 'react'
 export const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
+  const getItemsFromLocalStorage = JSON.parse(localStorage.getItem("ctdCommerceCart")) || []
 
-  const [ items, setItems ] = useState([])
+  const [ items, setItems ] = useState(getItemsFromLocalStorage)
 
   const addToCart = (item) => {
     const itemInCart = items.find(i => i.id === item.id) || item
     const quantity = itemInCart?.quantity || 0
     itemInCart.quantity = quantity + 1
-    setItems(current => [...current.filter(i => i.id !== item.id), itemInCart])
+
+    const newState = [
+      ...items.filter(i => i.id !== item.id),
+      itemInCart
+    ]
+
+    localStorage.setItem("ctdCommerceCart", JSON.stringify(newState))
+    setItems(newState)
   }
 
   const removeFromCart = (item) => {
@@ -21,11 +29,19 @@ export const CartProvider = ({children}) => {
 
     const quantity = itemInCart.quantity
 
-    if (quantity > 1) {
-      setItems(current => [...current.filter(i => i.id !== item.id), {...itemInCart, quantity: quantity - 1}])
-    } else {
-      setItems(current => current.filter(itemInCart => itemInCart.id !== item.id))
-    }
+    const newState = quantity > 1
+      ?
+        [
+          ...items.filter(i => i.id !== item.id), 
+          {
+            ...itemInCart, 
+            quantity: quantity - 1
+          }
+        ]
+      : items.filter(itemInCart => itemInCart.id !== item.id)
+
+    localStorage.setItem("ctdCommerceCart", JSON.stringify(newState))
+    setItems(newState)
   }
 
   const value = {
