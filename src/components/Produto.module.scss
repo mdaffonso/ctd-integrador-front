@@ -1,41 +1,40 @@
-.preco{
-    font-weight: 600;
-    font-size: 1.4rem;
-}
-.desc{
-    font-weight: 400;
-    font-size: .8rem;
-}
-
-.cartao{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 1rem 0;
-    border-radius: .35rem;
-    border: none;
-    box-shadow: 0 0.5rem 1rem -0.75rem rgb(197, 197, 197);
-}
-.corpo{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.img{
-    width: clamp(8rem ,7vw, 10rem);
-    height: 10rem;
-    object-fit: contain;
-}
 .link{
     text-decoration: none;
     height: 100%;
     color: black;
     margin: 0;
     padding: 0;
+    .cartao{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0;
+        padding: 1rem 0;
+        border-radius: .35rem;
+        border: none;
+        box-shadow: 0 0.5rem 1rem -0.75rem rgb(197, 197, 197);
+        .img{
+            width: clamp(8rem ,7vw, 10rem);
+            height: 10rem;
+            object-fit: contain;
+        }
+        .corpo{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .preco{
+                font-weight: 600;
+                font-size: 1.4rem;
+            }
+            .desc{
+                font-weight: 400;
+                font-size: .8rem;
+            }
+        }
+    }
 }

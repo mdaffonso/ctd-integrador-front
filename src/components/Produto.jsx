@@ -8,7 +8,7 @@ export default function Produto(props){
         <>
             <Link className={styles.link} to={`/produtos/${props.identidade}`}>
                 <Card className={styles.cartao}>
-                    <Card.Body className={styles.imgContainer}>
+                    <Card.Body>
                         <Card.Img className={styles.img} variant="top" src={props.image} alt="product" />
                     </Card.Body>
                     <Card.Body className={styles.corpo}>

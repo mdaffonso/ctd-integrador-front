@@ -3,39 +3,38 @@
     background-color: white;
     border-radius: 0.35rem;
     box-shadow: 0 0.5rem 1rem -0.75rem rgb(197, 197, 197);
-}
-.imagem{
-    width: 200px;
-    height: auto;
-}
-.colImage{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.linha{
-    display: flex;
-    flex-direction: column;
-    @media (min-width: 768px){
-        flex-direction: row;
+    .colImage{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .imagem{
+            width: 200px;
+            height: auto;
+        }
     }
-}
-.nome{
-    font-size: 2rem;
-}
-.preco{
-    font-size: 1.7rem;
-}
-.colDesc{
-    margin: 2rem 0;
-}
-.colButton{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-
-}
-.botao{
-    font-size: 0.7rem;
+    .linha{
+        display: flex;
+        flex-direction: column;
+        @media (min-width: 768px){
+            flex-direction: row;
+        }
+        .colDesc{
+            margin: 2rem 0;
+            .nome{
+                font-size: 2rem;
+            }
+            .preco{
+                font-size: 1.7rem;
+            }
+        }
+        .colButton{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            .botao{
+                font-size: 0.7rem;
+            }
+        }
+    }
 }

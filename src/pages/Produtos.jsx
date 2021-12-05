@@ -62,7 +62,7 @@ export default function Produtos(){
                         <h1 className={styles.h1}>Produtos {categoria ? <>- {traduzir(categoria)}</> : ''}</h1>
                         <Wrapper>
                             <Col sm={12} md={3} xl={2} className={`${styles.categorias}`}>
-                                <h2 className={styles.title}>Categorias</h2>
+                                <h2>Categorias</h2>
                                     <Link className={styles.categoria} to="/produtos">Todas</Link>
                                     <Link className={styles.categoria} to="/produtos/categoria/electronics">Eletrônicos</Link>
                                     <Link className={styles.categoria} to="/produtos/categoria/jewelery">Joias</Link>

@@ -46,7 +46,7 @@ export default function ProdutoDetalhes(){
                 <title>CTD Commerce | {product.title} </title>
             </Helmet>
             <Container className={styles.container}>
-                <Wrapper className={styles.wrapper}>
+                <Wrapper>
                 <Col className={styles.colImage} >
                     <img className={styles.imagem} src={product.image} alt="produto" />
                 </Col>
