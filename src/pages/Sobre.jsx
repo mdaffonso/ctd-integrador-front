@@ -1,6 +1,6 @@
 import Meta from "../components/Meta"
 import { Container, Col, Row } from "react-bootstrap";
-import Produto from '../components/Produto'
+import Colaborador from '../components/Colaborador'
 import styles from './Sobre.module.scss'
 
 export default function Sobre(){
@@ -50,17 +50,15 @@ export default function Sobre(){
                 <h1>Sobre nossa equipe</h1>
                     <Row className={styles.linha}>
                         {
-                            equipe.map((inimigo)=>{
-                                return(
-                                    <Col sm={12} md={6} l={4} xl={3}>
-                                        <Produto image={inimigo.imagem}
-                                        nome={inimigo.nome} 
-                                        descricao={inimigo.desc}
-                                        linkedin={inimigo.linkedin}
-                                        github={inimigo.github} />
-                                    </Col>
-                                )
-                            })
+                            equipe.map((inimigo)=>(
+                                <Col sm={12} md={6} lg={4} xl={3} key={inimigo.nome}>
+                                    <Colaborador image={inimigo.imagem}
+                                    nome={inimigo.nome} 
+                                    descricao={inimigo.desc}
+                                    linkedin={inimigo.linkedin}
+                                    github={inimigo.github} />
+                                </Col>
+                            ))
                         }
                     </Row>
             </Container>
