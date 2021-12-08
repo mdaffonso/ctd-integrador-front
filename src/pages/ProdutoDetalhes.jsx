@@ -15,6 +15,7 @@ export default function ProdutoDetalhes(){
 
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     const { produtoId } = useParams();
 
@@ -29,7 +30,7 @@ export default function ProdutoDetalhes(){
                 const response = await api.get(`products/${produtoId}`)
                 setProduct(response.data)
             }catch(e){
-                console.log(e);
+                setError("Não foi possível carregar os dados do produto")
             }
             
         }
@@ -45,7 +46,8 @@ export default function ProdutoDetalhes(){
     return(
         <>
         {
-            loading ? <SmallSpinner />
+            error ? <Container><Row><Col sm={12} md={6} lg={4}><p>{error}</p></Col></Row></Container>
+            : loading ? <SmallSpinner />
             :
             (
             <>
@@ -59,7 +61,7 @@ export default function ProdutoDetalhes(){
                         <Row className={styles.linha}>
                             <Col className={styles.colDesc} md={7}>
                                 <h2 className={styles.nome}>{product.title}</h2>
-                                <p className={styles.preco}>R$ {product.price.toFixed(2).replace(".", ",")}</p>
+                                <p className={styles.preco}>R$ {product.price.replace(".", ",")}</p>
                                 <p>{product.description}</p>
                             </Col>
                             <Col className={styles.colButton} md={5}>

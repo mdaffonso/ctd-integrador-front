@@ -30,14 +30,11 @@ export default function Home(){
     return(
         <>
             <Meta title="Início" />
-            {error ? (
-                <p>{error}</p>
-            )
+            { error ? (<Container><Row><Col sm={12} md={6} lg={4} xl={3}><p>{error}</p></Col></Row></Container>)
             : loading ? (
                 <SmallSpinner/>
             )
-            :
-            (
+            : (
                 <>
                     <Container className={styles.container}>
                         <h1>Destaques</h1>
@@ -144,7 +141,6 @@ export default function Home(){
                     </Container>
                 </>
             )
-            
         }
         </>
     )

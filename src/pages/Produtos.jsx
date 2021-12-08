@@ -11,9 +11,10 @@ import Categorias from "../components/Categorias"
  
 export default function Produtos(){
 
-    const [products, setProducts] = useState(null)
+    const [products, setProducts] = useState([])
+    const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [errors, setErrors] = useState({})
 
     const { categoria } = useParams();
 
@@ -24,11 +25,29 @@ export default function Produtos(){
           {  condition: "men's clothing", result: "Vestuário Masculino"  },
           {  condition: "women's clothing", result: "Vestuário Feminino"  }
         ]
-        return catMatrix.find(c => c.condition === cat).result
+        const category = catMatrix.find(c => c.condition === cat)
+        return category ? category.result : cat
     }
 
     useEffect(() => {
         const load = async () => {
+            setErrors({})
+            setCategories([])
+            setLoading(true)
+            try {
+                const categoriesResponse = await api.get("products/categories")
+                setCategories(categoriesResponse.data.map(category => ({ id: category.id, en: category.name, pt: traduzir(category.name)})))
+            } catch (error) {
+                setErrors(errors => ({...errors, categories: "Não foi possível carregar as categorias"}))
+                setLoading(false)
+            }
+        }
+        load()
+    }, [])
+
+    useEffect(() => {
+        const load = async () => {
+            setErrors({})
             setProducts(null)
             setLoading(true)
             try{
@@ -36,22 +55,23 @@ export default function Produtos(){
                     const response = await api.get("products")
                     setProducts(response.data)
                 }else{
-                    const response = await api.get(`products/category/${categoria}`)
-                    setProducts(response.data)
+                    const response = await api.get(`products/categories/${categories.find(c => c.en === categoria).id}`)
+                    setProducts(response.data.products)
                 }
             } catch(e) {
-                setError("Não foi possível carregar os produtos")
+                setErrors(errors => ({...errors, products: "Não foi possível carregar os produtos"}))
+                setLoading(false)
             }
             
         }
         load()
-    }, [categoria])
+    }, [categoria, categories])
 
     useEffect(() => {
-        if (products) {
+        if (products && categories) {
             setLoading(false)
         }
-    }, [products])
+    }, [products, categories])
 
     return(
         <>
@@ -59,12 +79,17 @@ export default function Produtos(){
             <Container>
                 <h1 className={styles.h1}>Produtos {categoria ? <>- {traduzir(categoria)}</> : ''}</h1>
                 <Wrapper>
-                    <Categorias />
                     {
-                            error ? (<p>{error}</p>) : loading ? (<SmallSpinner />) :(
+                        errors.categories ? <Col sm={12} md={3} xl={2}><p>{errors.categories}</p></Col>
+                        : loading ? <SmallSpinner />
+                        : <Categorias categorias={categories} />
+                    }
+                    {
+                            loading ? (<SmallSpinner />) :(
                             <Row className={styles.linha}>
                             {
-                                products && products.map(({id, title, price, image}) => (
+                                errors.products ? (<Col sm={12}><p>{errors.products}</p></Col>)
+                                : products && products.map(({id, title, price, image}) => (
                                     <Col sm={12} md={6} lg={4} xl={3} key={id}>
                                         <Produto identidade={id} title={title} price={price} image={image} />
                                     </Col>

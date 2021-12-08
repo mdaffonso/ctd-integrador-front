@@ -41,7 +41,7 @@ export default function Carrinho () {
 																	</Col>
 
 																	<Col md={2} className="d-flex align-items-center">
-																			R$ {item.price.toFixed(2).replace(".", ",")}
+																			R$ {item.price.replace(".", ",")}
 																	</Col>
 
 																	<Col md={2} className="d-flex justify-content-between align-items-center">
