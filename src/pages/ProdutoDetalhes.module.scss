@@ -10,6 +10,10 @@
         .imagem{
             max-width: 100%;
             height: auto;
+
+            @media (min-width: 992px) {
+                max-width: 20rem;
+            }
         }
     }
     .linha{
@@ -17,9 +21,10 @@
         flex-direction: column;
         @media (min-width: 768px){
             flex-direction: row;
+            align-items: flex-start;
         }
         .colDesc{
-            margin: 2rem 0;
+            margin: 0;
             .nome{
                 font-size: 2rem;
             }

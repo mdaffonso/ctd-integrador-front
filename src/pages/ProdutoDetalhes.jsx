@@ -55,18 +55,18 @@ export default function ProdutoDetalhes(){
                 <Meta title={product.title} />
                 <Container className={styles.container}>
                     <Wrapper>
-                        <Col className={`d-flex flex-column align-items-start gap-4 ${styles.colImage}`}>
-                            <Button variant="outline-secondary" onClick={() => navigate(-1)}>Voltar</Button>
-                            <img className={styles.imagem} src={product.image} alt="produto" />
-                        </Col>
                         <Row className={styles.linha}>
-                            <Col className={styles.colDesc} md={7}>
+                            <Col sm={12} lg={4} className={`d-flex flex-column align-items-center gap-4 ${styles.colImage}`}>
+                                <img className={styles.imagem} src={product.image} alt="produto" />
+                            </Col>
+                            <Col className={styles.colDesc} sm={12} lg={6}>
+                                <Button variant="outline-secondary" style={{margin: "0 0 2rem"}} onClick={() => navigate(-1)}>Voltar</Button>
                                 <h2 className={styles.nome}>{product.title}</h2>
                                 <p className={styles.preco}>R$ {product.price.replace(".", ",")}</p>
                                 <p>{product.description}</p>
                             </Col>
-                            <Col className={styles.colButton} md={5}>
-                                <div className="d-grid gap-4">
+                            <Col className={styles.colButton} sm={12} lg={2}>
+                                <div className="d-grid gap-2">
                                     <Button className={styles.botao} variant="primary" size="lg" onClick={() => buyNow(product)}>
                                         Comprar
                                     </Button>
