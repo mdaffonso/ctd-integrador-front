@@ -35,7 +35,8 @@ export default function ProdutoDetalhes(){
             
         }
         loadProduct()
-    })
+    // eslint-disable-next-line
+    }, [])
 
     useEffect(()=>{
         if(product){

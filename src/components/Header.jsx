@@ -3,12 +3,10 @@ import { useState, useEffect, useCallback, useContext } from "react"
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import styles from './Header.module.scss'
 import { CartContext } from "../contexts/CartContext"
-import { MainContext } from "../contexts/MainContext"
 
 export default function Header(){
 
     const { items } = useContext(CartContext)
-    const main = useContext(MainContext)
 
     const [imageStyle, setImageStyle] = useState([styles.image])
     const [sequence, setSequence] = useState([])
@@ -41,11 +39,6 @@ export default function Header(){
 
         return () => document.removeEventListener("keydown", flip)
     }, [sequence, flip])
-
-    useEffect(() => {
-        main.switchFavicon()
-    // eslint-disable-next-line
-    }, [imageStyle])
 
     return(
         <header className={styles.header}>

@@ -1,19 +1,17 @@
 import { Row, Col, Carousel, Container } from 'react-bootstrap'
+import Meta from "../components/Meta"
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import Produto from "../components/Produto";
 import styles from './Home.module.scss'
 import SmallSpinner from "../components/SmallSpinner";
-import { MainContext } from "../contexts/MainContext"
 
 export default function Home(){
 
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-
-    const main = useContext(MainContext)
 
     useEffect(() => {
         const load = async () => {
@@ -31,6 +29,7 @@ export default function Home(){
 
     return(
         <>
+            <Meta title={"Início"} />
             { error ? (<Container><Row><Col sm={12} md={6} lg={4} xl={3}><p>{error}</p></Col></Row></Container>)
             : loading ? (
                 <SmallSpinner/>
