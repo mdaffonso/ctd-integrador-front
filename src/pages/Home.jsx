@@ -1,31 +1,31 @@
-import { Row, Col, Carousel, Container } from 'react-bootstrap'
-import Meta from "../components/Meta"
-import { useState, useEffect } from 'react'
+import { Row, Col, Carousel, Container } from "react-bootstrap";
+import Meta from "../components/Meta";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import Produto from "../components/Produto";
-import styles from './Home.module.scss'
+import styles from "./Home.module.scss";
 import SmallSpinner from "../components/SmallSpinner";
 
 export default function Home(){
 
-    const [products, setProducts] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [products, setProducts] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const load = async () => {
-            setProducts(null)
+            setProducts(null);
             try{
-                const response = await api.get("products")
-                setProducts(response.data)
-                setLoading(false)
+                const response = await api.get("products");
+                setProducts(response.data);
+                setLoading(false);
             } catch(e) {
-                setError("Não foi possível carregar os produtos")
+                setError("Não foi possível carregar os produtos");
             }
         }
         load()
-    }, [])
+    }, []);
 
     return(
         <>

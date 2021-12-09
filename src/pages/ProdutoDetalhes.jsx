@@ -1,48 +1,48 @@
-import Meta from "../components/Meta"
-import { useParams, useNavigate } from "react-router"
-import { useState, useEffect, useContext } from 'react'
-import { Container, Col, Row, Button } from 'react-bootstrap'
+import Meta from "../components/Meta";
+import { useParams, useNavigate } from "react-router";
+import { useState, useEffect, useContext } from 'react';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import api from "../services/api";
 import Wrapper from "../components/Wrapper";
-import styles from './ProdutoDetalhes.module.scss'
+import styles from './ProdutoDetalhes.module.scss';
 import SmallSpinner from "../components/SmallSpinner";
-import { CartContext } from "../contexts/CartContext"
+import { CartContext } from "../contexts/CartContext";
 
 export default function ProdutoDetalhes(){
 
-    const navigate = useNavigate()
-    const { addToCart } = useContext(CartContext)
+    const navigate = useNavigate();
+    const { addToCart } = useContext(CartContext);
 
-    const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [product, setProduct] = useState();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const { produtoId } = useParams();
 
     const buyNow = (item) => {
-        addToCart(item)
-        navigate(`/carrinho`, {replace: true})
-    }
+        addToCart(item);
+        navigate(`/carrinho`, {replace: true});
+    };
 
     useEffect(()=>{
         async function loadProduct(){
             try{
-                const response = await api.get(`products/${produtoId}`)
-                setProduct(response.data)
+                const response = await api.get(`products/${produtoId}`);
+                setProduct(response.data);
             }catch(e){
-                setError("Não foi possível carregar os dados do produto")
+                setError("Não foi possível carregar os dados do produto");
             }
             
         }
         loadProduct()
     // eslint-disable-next-line
-    }, [])
+    }, []);
 
     useEffect(()=>{
         if(product){
             setLoading(false)
         }
-    }, [product])
+    }, [product]);
 
     return(
         <>
