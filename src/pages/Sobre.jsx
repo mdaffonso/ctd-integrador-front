@@ -1,7 +1,7 @@
-import Meta from "../components/Meta"
+import Meta from "../components/Meta";
 import { Container, Col, Row } from "react-bootstrap";
-import Colaborador from '../components/Colaborador'
-import styles from './Sobre.module.scss'
+import Colaborador from '../components/Colaborador';
+import styles from './Sobre.module.scss';
 
 export default function Sobre(){
 
@@ -30,7 +30,7 @@ export default function Sobre(){
         {
             nome:"Adryana Portugal",
             imagem: "https://avatars.githubusercontent.com/u/85203403?v=4",
-            desc: "Desenvolvedor front-end júnior. Mora no Rio de Janeiro-RJ",
+            desc: "Desenvolvedora front-end júnior. Mora no Rio de Janeiro-RJ",
             linkedin: "https://www.linkedin.com/in/adryanaportugal/",
             github: "https://github.com/AdryanaP"
         },

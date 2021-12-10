@@ -1,12 +1,12 @@
-import Meta from "../components/Meta"
-import { useContext } from "react"
-import { Link } from "react-router-dom"
-import { Container, ListGroup, Image, Row, Col, Button } from 'react-bootstrap'
-import { CartContext } from "../contexts/CartContext"
-import SW from "sweetalert2"
+import Meta from "../components/Meta";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Container, ListGroup, Image, Row, Col, Button } from "react-bootstrap";
+import { CartContext } from "../contexts/CartContext";
+import SW from "sweetalert2";
 
 export default function Carrinho () {
-	const { items, addToCart, removeFromCart, clearCart } = useContext(CartContext)
+	const { items, addToCart, removeFromCart, clearCart } = useContext(CartContext);
 
 	const confirmPurchase = () => {
 		SW.fire(
@@ -15,7 +15,7 @@ export default function Carrinho () {
 			"success"
 		)
 		clearCart()
-	}
+	};
 
 	return (
 		<>

@@ -11,10 +11,10 @@ import Categorias from "../components/Categorias"
  
 export default function Produtos(){
 
-    const [products, setProducts] = useState([])
-    const [categories, setCategories] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [errors, setErrors] = useState({})
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [errors, setErrors] = useState({});
 
     const { categoria } = useParams();
 
@@ -25,53 +25,53 @@ export default function Produtos(){
           {  condition: "men's clothing", result: "Vestuário Masculino"  },
           {  condition: "women's clothing", result: "Vestuário Feminino"  }
         ]
-        const category = catMatrix.find(c => c.condition === cat)
+        const category = catMatrix.find(c => c.condition === cat);
         return category ? category.result : cat
-    }
+    };
 
     useEffect(() => {
         const load = async () => {
-            setErrors({})
-            setCategories([])
-            setLoading(true)
+            setErrors({});
+            setCategories([]);
+            setLoading(true);
             try {
-                const categoriesResponse = await api.get("products/categories")
-                setCategories(categoriesResponse.data.map(category => ({ id: category.id, en: category.name, pt: traduzir(category.name)})))
+                const categoriesResponse = await api.get("products/categories");
+                setCategories(categoriesResponse.data.map(category => ({ id: category.id, en: category.name, pt: traduzir(category.name)})));
             } catch (error) {
-                setErrors(errors => ({...errors, categories: "Não foi possível carregar as categorias"}))
-                setLoading(false)
+                setErrors(errors => ({...errors, categories: "Não foi possível carregar as categorias"}));
+                setLoading(false);
             }
         }
         load()
-    }, [])
+    }, []);
 
     useEffect(() => {
         const load = async () => {
-            setErrors({})
-            setProducts(null)
-            setLoading(true)
+            setErrors({});
+            setProducts(null);
+            setLoading(true);
             try{
                 if(!categoria){
-                    const response = await api.get("products")
-                    setProducts(response.data)
+                    const response = await api.get("products");
+                    setProducts(response.data);
                 }else{
-                    const response = await api.get(`products/categories/${categories.find(c => c.en === categoria).id}`)
-                    setProducts(response.data.products)
-                }
+                    const response = await api.get(`products/categories/${categories.find(c => c.en === categoria).id}`);
+                    setProducts(response.data.products);
+                };
             } catch(e) {
-                setErrors(errors => ({...errors, products: "Não foi possível carregar os produtos"}))
-                setLoading(false)
+                setErrors(errors => ({...errors, products: "Não foi possível carregar os produtos"}));
+                setLoading(false);
             }
             
         }
         load()
-    }, [categoria, categories])
+    }, [categoria, categories]);
 
     useEffect(() => {
         if (products && categories) {
-            setLoading(false)
+            setLoading(false);
         }
-    }, [products, categories])
+    }, [products, categories]);
 
     return(
         <>
