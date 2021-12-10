@@ -56,7 +56,7 @@ export default function ProdutoDetalhes(){
                 <Container className={styles.container}>
                     <Wrapper>
                         <Row className={styles.linha}>
-                            <Col sm={12} lg={4} className={`d-flex flex-column align-items-center gap-4 ${styles.colImage}`}>
+                            <Col sm={12} lg={4} className={`d-flex flex-column align-items-center mb-5 ${styles.colImage}`}>
                                 <img className={styles.imagem} src={product.image} alt="produto" />
                             </Col>
                             <Col className={styles.colDesc} sm={12} lg={6}>

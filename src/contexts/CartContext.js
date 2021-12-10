@@ -20,7 +20,7 @@ export const CartProvider = ({children}) => {
     const newState = [
       ...items.filter(i => i.id !== item.id),
       itemInCart
-    ]
+    ].sort((a, b) => a.id - b.id)
 
     localStorage.setItem("ctdCommerceCart", JSON.stringify(newState))
     setItems(newState)
@@ -42,8 +42,8 @@ export const CartProvider = ({children}) => {
             ...itemInCart, 
             quantity: quantity - 1
           }
-        ]
-      : items.filter(itemInCart => itemInCart.id !== item.id)
+        ].sort((a, b) => a.id - b.id)
+      : items.filter(itemInCart => itemInCart.id !== item.id).sort((a, b) => a.id - b.id)
 
     localStorage.setItem("ctdCommerceCart", JSON.stringify(newState))
     setItems(newState)
